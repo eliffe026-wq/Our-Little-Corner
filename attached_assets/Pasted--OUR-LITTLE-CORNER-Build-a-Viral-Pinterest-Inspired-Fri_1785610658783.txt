@@ -1,0 +1,813 @@
+# 💌 OUR LITTLE CORNER
+### Build a Viral Pinterest-Inspired Friendship Day Web Experience
+
+You are an award-winning Product Designer, UI/UX Designer, Creative Director, Motion Designer, and Senior Full Stack Engineer.
+
+Your task is to build a COMPLETE production-ready web application called **Our Little Corner**.
+
+This is NOT a greeting card.
+This is NOT a static website.
+This is NOT a normal web app.
+
+It is an emotional, interactive experience between two friends.
+
+Imagine opening a scrapbook your best friend secretly spent all night making just for you.
+
+The website should make users smile, laugh, cry a little, take screenshots, and instantly want to send it to another friend.
+
+The website should have extremely high viral potential.
+
+────────────────────────────────────────
+
+# MAIN CONCEPT
+
+Every friendship gets its own private scrapbook.
+
+User A creates a scrapbook.
+
+User A sends the personalized link.
+
+User B opens it.
+
+Both friends continue building the scrapbook together.
+
+Everything inside belongs ONLY to those two people.
+
+Nobody else can view it.
+
+The scrapbook keeps growing every time one of them visits.
+
+Think of it as:
+
+Pinterest
++
+Scrapbook Journal
++
+Notion
++
+Spotify Wrapped emotions
++
+Studio Ghibli softness
++
+A friendship diary.
+
+────────────────────────────────────────
+
+# WEBSITE NAME
+
+Our Little Corner
+
+Domain structure:
+
+our-little-corner/
+
+Every scrapbook gets its own personalized URL.
+
+Examples:
+
+our-little-corner/zainif-sana
+
+our-little-corner/riya-aisha
+
+our-little-corner/alex-emma
+
+If a URL already exists,
+
+automatically generate
+
+our-little-corner/zainif-sana-84fd
+
+Keep URLs beautiful and human-readable.
+
+────────────────────────────────────────
+
+# TECH STACK
+
+React
+
+Vite
+
+TailwindCSS
+
+Framer Motion
+
+Firebase Authentication (Anonymous)
+
+Firebase Firestore
+
+Firebase Storage
+
+React Router
+
+Deploy Ready
+
+Responsive
+
+Component Based Architecture
+
+Reusable Components
+
+Clean Folder Structure
+
+────────────────────────────────────────
+
+# DESIGN STYLE
+
+This website should feel handcrafted.
+
+Inspired by:
+
+Pinterest
+
+Coquette
+
+Scrapbook
+
+Vintage Journal
+
+Soft Korean Aesthetic
+
+Studio Ghibli
+
+Modern Gen Z
+
+Handmade crafts
+
+Paper stationery
+
+Polaroids
+
+Cafe journals
+
+It should NEVER feel like software.
+
+Users should feel like they're touching paper.
+
+────────────────────────────────────────
+
+# COLOR PALETTE
+
+Cream
+
+Pastel Pink
+
+Dusty Rose
+
+Soft Lavender
+
+Butter Yellow
+
+Sage Green
+
+Baby Blue
+
+Background:
+#FFF9F5
+
+Rounded corners.
+
+Soft shadows.
+
+Lots of white space.
+
+────────────────────────────────────────
+
+# FONTS
+
+Playfair Display
+
+Poppins
+
+Caveat
+
+────────────────────────────────────────
+
+# BACKGROUND
+
+The entire website should look like a scrapbook.
+
+Include:
+
+Paper texture
+
+Notebook pages
+
+Pink ribbons
+
+Tiny bows
+
+Pressed flowers
+
+Coffee stains
+
+Washi tape
+
+Hand-drawn hearts
+
+Cloud doodles
+
+Sparkles
+
+Polaroids
+
+Lace corners
+
+Tiny teddy bears
+
+Little cherries
+
+Butterflies
+
+Stars
+
+Everything should look handcrafted.
+
+────────────────────────────────────────
+
+# ANIMATIONS
+
+Everything should feel magical.
+
+Page turning
+
+Paper unfolding
+
+Ribbon movement
+
+Floating petals
+
+Butterflies
+
+Confetti
+
+Paper pop
+
+Hover tilt
+
+Sticker peel
+
+Heart burst
+
+Cursor sparkle trail
+
+Floating bows
+
+Smooth transitions
+
+No harsh animations.
+
+────────────────────────────────────────
+
+# LANDING EXPERIENCE
+
+The user should NOT instantly see the scrapbook.
+
+Instead...
+
+A tiny envelope gently falls from the top.
+
+It lands on the paper.
+
+A handwritten note appears.
+
+Example:
+
+💌
+
+Someone made a little corner of the internet just for you...
+
+Happy Friendship Day.
+
+Below it...
+
+A pink wax-sealed envelope with a ribbon.
+
+Button:
+
+🎀 Open My Letter
+
+When clicked...
+
+The wax seal breaks.
+
+The paper unfolds.
+
+The scrapbook slowly opens with a realistic page turning animation.
+
+────────────────────────────────────────
+
+# CREATE SCRAPBOOK FLOW
+
+On the homepage there should always be a beautiful button:
+
+✨ Create Our Little Corner
+
+When clicked...
+
+Open a gorgeous scrapbook modal.
+
+Ask:
+
+Your Name
+
+Friend's Name
+
+Nickname (optional)
+
+Favorite Emoji
+
+Choose Scrapbook Theme
+
+Then ask:
+
+Write something only your friend should see.
+
+Large handwritten textbox.
+
+Optional:
+
+Upload one photo
+
+Add one song
+
+Then click:
+
+✨ Create My Scrapbook
+
+Generate the personalized URL.
+
+Store everything in Firebase.
+
+Display:
+
+✨ Your Little Corner is Ready
+
+Show:
+
+our-little-corner/zainif-sana
+
+Buttons:
+
+Copy Link
+
+Share to WhatsApp
+
+Download QR
+
+────────────────────────────────────────
+
+# PRIVACY
+
+This is EXTREMELY IMPORTANT.
+
+Every scrapbook is private.
+
+Only users with that unique URL can open it.
+
+Nobody else should ever see:
+
+Messages
+
+Photos
+
+Voice notes
+
+Answers
+
+Memories
+
+Promises
+
+Drawings
+
+Everything is stored only inside that friendship.
+
+────────────────────────────────────────
+
+# WEBSITE STRUCTURE
+
+Do NOT create 10 boring pages.
+
+Instead build around 5 highly interactive sections.
+
+Every section should encourage users to interact.
+
+Users should click things.
+
+Open things.
+
+Write things.
+
+Reveal things.
+
+Build things together.
+
+Every interaction should save automatically.
+
+────────────────────────────────────────
+
+# SECTION 1
+
+💌 SECRET ENVELOPE
+
+Display a beautiful envelope.
+
+Ribbon.
+
+Wax seal.
+
+Open animation.
+
+Inside:
+
+The sender's hidden message.
+
+Friend can reply.
+
+Replies appear underneath.
+
+Looks like handwritten letters.
+
+────────────────────────────────────────
+
+# SECTION 2
+
+📖 OUR LITTLE DIARY
+
+Instead of forms...
+
+Every question appears like a diary prompt.
+
+Examples:
+
+What reminds you of me?
+
+What's our comfort food?
+
+Which song is literally us?
+
+What's one memory you'll never forget?
+
+What makes me different from everyone else?
+
+One thing you've never told me.
+
+Each answer becomes a handwritten diary entry.
+
+Both friends answer.
+
+Both answers stay forever.
+
+────────────────────────────────────────
+
+# SECTION 3
+
+📌 MEMORY BOARD
+
+A corkboard.
+
+Sticky notes.
+
+Push pins.
+
+Both users add memories.
+
+Examples:
+
+Remember when...
+
+Our funniest joke...
+
+That embarrassing moment...
+
+The best day ever...
+
+Click a note.
+
+Paper unfolds.
+
+Add unlimited memories.
+
+────────────────────────────────────────
+
+# SECTION 4
+
+🌸 FRIENDSHIP GARDEN
+
+The friendship literally grows.
+
+Every interaction plants something.
+
+Write memory
+
+Flower grows.
+
+Answer question
+
+Butterfly appears.
+
+Upload photo
+
+Tree grows.
+
+Leave promise
+
+New flowers bloom.
+
+Garden slowly becomes magical.
+
+────────────────────────────────────────
+
+# SECTION 5
+
+🩷 PROMISE TREE
+
+Tiny tree.
+
+Every promise waters it.
+
+Examples:
+
+I'll always answer your calls.
+
+I'll remind you to drink water.
+
+I'll always support your dreams.
+
+I'll always save your embarrassing photos.
+
+Every accepted promise grows the tree.
+
+Eventually...
+
+Cherry blossoms bloom.
+
+────────────────────────────────────────
+
+# EXTRA INTERACTIVE FEATURES
+
+🎀 Friendship Bracelet Maker
+
+Decorate a friendship bracelet.
+
+Choose beads.
+
+Letters.
+
+Charms.
+
+Colors.
+
+Both friends sign it.
+
+Download it.
+
+━━━━━━━━━━━━━━━━━━━━
+
+🖍 Draw Together
+
+Tiny canvas.
+
+Both friends doodle.
+
+Saved forever.
+
+━━━━━━━━━━━━━━━━━━━━
+
+📸 Polaroid Wall
+
+Upload favorite photos.
+
+Automatically appear taped into scrapbook.
+
+━━━━━━━━━━━━━━━━━━━━
+
+🎵 Our Soundtrack
+
+Each friend adds one song.
+
+Display both.
+
+━━━━━━━━━━━━━━━━━━━━
+
+🎤 Voice Letters
+
+Record up to 30 seconds.
+
+Play directly inside scrapbook.
+
+━━━━━━━━━━━━━━━━━━━━
+
+😊 Mood Today
+
+Choose mood.
+
+Friend sees today's mood.
+
+━━━━━━━━━━━━━━━━━━━━
+
+🌷 Time Capsule
+
+Write a message.
+
+Locked until next Friendship Day.
+
+Countdown shown.
+
+━━━━━━━━━━━━━━━━━━━━
+
+🎡 Friendship Wheel
+
+Spin.
+
+Random wholesome challenge.
+
+━━━━━━━━━━━━━━━━━━━━
+
+✨ Compliment Machine
+
+100+ compliments.
+
+Cute.
+
+Funny.
+
+Emotional.
+
+━━━━━━━━━━━━━━━━━━━━
+
+🧩 "Finish My Sentence"
+
+One friend writes:
+
+"You always..."
+
+The other completes it.
+
+Then reveal both answers.
+
+━━━━━━━━━━━━━━━━━━━━
+
+💭 "If We..."
+
+Prompt cards like:
+
+"If we opened a café together, what would it be called?"
+
+"If we got lost in another country, who would panic first?"
+
+"If our friendship were a movie, what would its title be?"
+
+Reveal both answers side by side.
+
+━━━━━━━━━━━━━━━━━━━━
+
+📬 "Leave Me a Note"
+
+A tiny sticky note area where either friend can leave short messages anytime.
+
+Think of it as a shared digital fridge covered with cute notes.
+
+────────────────────────────────────────
+
+# MICRO INTERACTIONS
+
+Everything should reward curiosity.
+
+Click bows.
+
+Tiny animation.
+
+Click flowers.
+
+Petals fall.
+
+Click stars.
+
+Twinkle.
+
+Click teddy bear.
+
+It waves.
+
+Click butterflies.
+
+They fly away.
+
+Click ribbons.
+
+Paper opens.
+
+Hidden easter eggs everywhere.
+
+────────────────────────────────────────
+
+# CURSOR
+
+Replace default cursor.
+
+Soft sparkle cursor.
+
+Every click leaves tiny bows.
+
+Occasional glitter.
+
+────────────────────────────────────────
+
+# SOUND
+
+Optional.
+
+Soft lo-fi.
+
+Mute button.
+
+Paper sounds.
+
+Tiny pops.
+
+Notebook page turning.
+
+────────────────────────────────────────
+
+# RESPONSIVE
+
+Mobile First.
+
+Must look incredible inside:
+
+Instagram Browser
+
+WhatsApp Browser
+
+Chrome
+
+Safari
+
+Desktop
+
+Tablet
+
+────────────────────────────────────────
+
+# FINAL PAGE (DO NOT CHANGE THE MESSAGE)
+
+The scrapbook closes on its final spread.
+
+Beautiful paper.
+
+Polaroids.
+
+Flowers.
+
+Pink bows.
+
+Ribbon bookmarks.
+
+Pressed flowers.
+
+Handwritten notes.
+
+Centered text:
+
+Happy Friendship Day ❤️
+
+No matter where life takes us...
+
+Thank you for existing.
+
+You make life brighter.
+
+I'm really grateful our paths crossed.
+
+Below the message is ONE LARGE BEAUTIFUL BUTTON.
+
+🎀 Create Our Little Corner
+
+This button starts the Create Scrapbook flow again.
+
+This is the website's viral loop.
+
+Every visitor should feel inspired to create one for another friend.
+
+────────────────────────────────────────
+
+# OVERALL FEELING
+
+This should feel less like browsing a website and more like discovering a magical handmade friendship scrapbook hidden inside the internet.
+
+Every interaction should feel warm.
+
+Every animation should feel satisfying.
+
+Every page should be screenshot-worthy.
+
+The UI should be "Pinterest girl" aesthetic with soft pink bows, lace, washi tape, doodles, handwritten notes, pressed flowers, Polaroids, sparkles, ribbons, and dreamy pastel colors.
+
+Prioritize delight over complexity.
+
+The experience should make users say:
+
+"I've never seen a Friendship Day website this cute before."
+
+Build clean, maintainable code with reusable components, excellent performance, smooth animations, and Firebase-powered private collaborative scrapbooks.

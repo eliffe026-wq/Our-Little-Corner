@@ -3,20 +3,35 @@ info:
   # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: Our Little Corner API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: scrapbooks
+    description: Scrapbook operations
+  - name: messages
+    description: Secret envelope messages
+  - name: diary
+    description: Diary prompts and answers
+  - name: memories
+    description: Memory board
+  - name: promises
+    description: Promise tree
+  - name: notes
+    description: Sticky notes
+  - name: mood
+    description: Today's mood
+  - name: polaroids
+    description: Photo polaroids
 paths:
   /healthz:
     get:
       operationId: healthCheck
       tags: [health]
       summary: Health check
-      description: Returns server health status
       responses:
         "200":
           description: Healthy
@@ -24,6 +39,384 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  /scrapbooks:
+    post:
+      operationId: createScrapbook
+      tags: [scrapbooks]
+      summary: Create a new friendship scrapbook
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ScrapbookInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Scrapbook"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /scrapbooks/{slug}:
+    get:
+      operationId: getScrapbook
+      tags: [scrapbooks]
+      summary: Get a scrapbook by slug
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Scrapbook"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /scrapbooks/{slug}/messages:
+    get:
+      operationId: getMessages
+      tags: [messages]
+      summary: Get all envelope messages for a scrapbook
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Message"
+    post:
+      operationId: createMessage
+      tags: [messages]
+      summary: Add a message or reply to the secret envelope
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MessageInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Message"
+
+  /scrapbooks/{slug}/diary:
+    get:
+      operationId: getDiaryEntries
+      tags: [diary]
+      summary: Get all diary entries for a scrapbook
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/DiaryEntry"
+    post:
+      operationId: saveDiaryEntry
+      tags: [diary]
+      summary: Save a diary answer
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DiaryEntryInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DiaryEntry"
+
+  /scrapbooks/{slug}/memories:
+    get:
+      operationId: getMemories
+      tags: [memories]
+      summary: Get all memories on the memory board
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Memory"
+    post:
+      operationId: createMemory
+      tags: [memories]
+      summary: Add a memory to the board
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MemoryInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Memory"
+
+  /scrapbooks/{slug}/promises:
+    get:
+      operationId: getPromises
+      tags: [promises]
+      summary: Get all promises on the promise tree
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/FriendshipPromise"
+    post:
+      operationId: createPromise
+      tags: [promises]
+      summary: Add a promise to the tree
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PromiseInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FriendshipPromise"
+
+  /scrapbooks/{slug}/notes:
+    get:
+      operationId: getNotes
+      tags: [notes]
+      summary: Get all sticky notes
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/StickyNote"
+    post:
+      operationId: createNote
+      tags: [notes]
+      summary: Add a sticky note
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StickyNoteInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StickyNote"
+
+  /scrapbooks/{slug}/mood:
+    get:
+      operationId: getMoods
+      tags: [mood]
+      summary: Get recent moods for a scrapbook
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Mood"
+    post:
+      operationId: saveMood
+      tags: [mood]
+      summary: Set today's mood
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MoodInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Mood"
+
+  /scrapbooks/{slug}/polaroids:
+    get:
+      operationId: getPolaroids
+      tags: [polaroids]
+      summary: Get all polaroid photos
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Polaroid"
+    post:
+      operationId: createPolaroid
+      tags: [polaroids]
+      summary: Add a polaroid photo
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PolaroidInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Polaroid"
+
+  /scrapbooks/{slug}/garden:
+    get:
+      operationId: getGarden
+      tags: [scrapbooks]
+      summary: Get friendship garden stats (growth from interactions)
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GardenStats"
+
 components:
   schemas:
     HealthStatus:
@@ -34,3 +427,413 @@ components:
       required:
         - status
 
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+      required:
+        - error
+
+    Scrapbook:
+      type: object
+      properties:
+        id:
+          type: number
+        slug:
+          type: string
+        creatorName:
+          type: string
+        friendName:
+          type: string
+        nickname:
+          type: ["string", "null"]
+        favoriteEmoji:
+          type: string
+        theme:
+          type: string
+        initialMessage:
+          type: ["string", "null"]
+        songUrl:
+          type: ["string", "null"]
+        songTitle:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - slug
+        - creatorName
+        - friendName
+        - favoriteEmoji
+        - theme
+        - createdAt
+
+    ScrapbookInput:
+      type: object
+      properties:
+        creatorName:
+          type: string
+          minLength: 1
+        friendName:
+          type: string
+          minLength: 1
+        nickname:
+          type: string
+        favoriteEmoji:
+          type: string
+        theme:
+          type: string
+        initialMessage:
+          type: string
+        songUrl:
+          type: string
+        songTitle:
+          type: string
+      required:
+        - creatorName
+        - friendName
+        - favoriteEmoji
+        - theme
+
+    Message:
+      type: object
+      properties:
+        id:
+          type: number
+        scrapbookSlug:
+          type: string
+        authorName:
+          type: string
+        content:
+          type: string
+        isReply:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - scrapbookSlug
+        - authorName
+        - content
+        - isReply
+        - createdAt
+
+    MessageInput:
+      type: object
+      properties:
+        authorName:
+          type: string
+          minLength: 1
+        content:
+          type: string
+          minLength: 1
+        isReply:
+          type: boolean
+      required:
+        - authorName
+        - content
+        - isReply
+
+    DiaryEntry:
+      type: object
+      properties:
+        id:
+          type: number
+        scrapbookSlug:
+          type: string
+        promptKey:
+          type: string
+        promptText:
+          type: string
+        authorName:
+          type: string
+        answer:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - scrapbookSlug
+        - promptKey
+        - promptText
+        - authorName
+        - answer
+        - createdAt
+
+    DiaryEntryInput:
+      type: object
+      properties:
+        promptKey:
+          type: string
+          minLength: 1
+        promptText:
+          type: string
+          minLength: 1
+        authorName:
+          type: string
+          minLength: 1
+        answer:
+          type: string
+          minLength: 1
+      required:
+        - promptKey
+        - promptText
+        - authorName
+        - answer
+
+    Memory:
+      type: object
+      properties:
+        id:
+          type: number
+        scrapbookSlug:
+          type: string
+        authorName:
+          type: string
+        title:
+          type: string
+        content:
+          type: string
+        color:
+          type: string
+        pinColor:
+          type: string
+        positionX:
+          type: number
+        positionY:
+          type: number
+        rotation:
+          type: number
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - scrapbookSlug
+        - authorName
+        - title
+        - content
+        - color
+        - pinColor
+        - positionX
+        - positionY
+        - rotation
+        - createdAt
+
+    MemoryInput:
+      type: object
+      properties:
+        authorName:
+          type: string
+          minLength: 1
+        title:
+          type: string
+          minLength: 1
+        content:
+          type: string
+          minLength: 1
+        color:
+          type: string
+        pinColor:
+          type: string
+        positionX:
+          type: number
+        positionY:
+          type: number
+        rotation:
+          type: number
+      required:
+        - authorName
+        - title
+        - content
+
+    FriendshipPromise:
+      type: object
+      properties:
+        id:
+          type: number
+        scrapbookSlug:
+          type: string
+        authorName:
+          type: string
+        promiseText:
+          type: string
+        accepted:
+          type: boolean
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - scrapbookSlug
+        - authorName
+        - promiseText
+        - accepted
+        - createdAt
+
+    PromiseInput:
+      type: object
+      properties:
+        authorName:
+          type: string
+          minLength: 1
+        promiseText:
+          type: string
+          minLength: 1
+        accepted:
+          type: boolean
+      required:
+        - authorName
+        - promiseText
+        - accepted
+
+    StickyNote:
+      type: object
+      properties:
+        id:
+          type: number
+        scrapbookSlug:
+          type: string
+        authorName:
+          type: string
+        content:
+          type: string
+        color:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - scrapbookSlug
+        - authorName
+        - content
+        - color
+        - createdAt
+
+    StickyNoteInput:
+      type: object
+      properties:
+        authorName:
+          type: string
+          minLength: 1
+        content:
+          type: string
+          minLength: 1
+        color:
+          type: string
+      required:
+        - authorName
+        - content
+        - color
+
+    Mood:
+      type: object
+      properties:
+        id:
+          type: number
+        scrapbookSlug:
+          type: string
+        authorName:
+          type: string
+        mood:
+          type: string
+        emoji:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - scrapbookSlug
+        - authorName
+        - mood
+        - emoji
+        - createdAt
+
+    MoodInput:
+      type: object
+      properties:
+        authorName:
+          type: string
+          minLength: 1
+        mood:
+          type: string
+          minLength: 1
+        emoji:
+          type: string
+          minLength: 1
+      required:
+        - authorName
+        - mood
+        - emoji
+
+    Polaroid:
+      type: object
+      properties:
+        id:
+          type: number
+        scrapbookSlug:
+          type: string
+        authorName:
+          type: string
+        imageUrl:
+          type: string
+        caption:
+          type: ["string", "null"]
+        rotation:
+          type: number
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - scrapbookSlug
+        - authorName
+        - imageUrl
+        - rotation
+        - createdAt
+
+    PolaroidInput:
+      type: object
+      properties:
+        authorName:
+          type: string
+          minLength: 1
+        imageUrl:
+          type: string
+          minLength: 1
+        caption:
+          type: string
+        rotation:
+          type: number
+      required:
+        - authorName
+        - imageUrl
+
+    GardenStats:
+      type: object
+      properties:
+        scrapbookSlug:
+          type: string
+        flowerCount:
+          type: number
+        butterflyCount:
+          type: number
+        treeLevel:
+          type: number
+        promiseBlossoms:
+          type: number
+        totalInteractions:
+          type: number
+      required:
+        - scrapbookSlug
+        - flowerCount
+        - butterflyCount
+        - treeLevel
+        - promiseBlossoms
+        - totalInteractions

@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Our Little Corner"
+description = "A viral Pinterest-inspired private friendship scrapbook web experience. Two friends share a unique URL to build a magical digital scrapbook together — with handwritten letters, diary prompts, memory boards, a friendship garden, and a promise tree. Features a dreamy coquette scrapbook aesthetic with Studio Ghibli softness, animations, and full privacy."
+version = "1.0.0"
+id = "artifacts/our-little-corner"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23326
+
+[services.development]
+run = "pnpm --filter @workspace/our-little-corner run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/our-little-corner", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/our-little-corner/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23326"
+BASE_PATH = "/"
