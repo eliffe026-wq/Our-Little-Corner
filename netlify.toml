@@ -1,4 +1,6 @@
 [build]
-command = "npm run build"
-publish = "dist"[build.environment]
-BASE_PATH = "/"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  BASE_PATH = "/"
