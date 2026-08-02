@@ -3,4 +3,6 @@
   publish = "artifacts/our-little-corner/dist/public"
 
 [build.environment]
+  NODE_VERSION = "24.18.1"
   BASE_PATH = "/"
+  VITE_API_URL = "https://our-little-corner-eliffe026.replit.app"
