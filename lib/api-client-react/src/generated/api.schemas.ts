@@ -182,6 +182,30 @@ export interface PolaroidInput {
   rotation?: number;
 }
 
+export interface GuestNote {
+  id: number;
+  name: string;
+  message: string;
+  createdAt: string;
+}
+
+export interface GuestNoteInput {
+  /**
+     * @minLength 1
+     * @maxLength 50
+     */
+  name: string;
+  /**
+     * @minLength 1
+     * @maxLength 150
+     */
+  message: string;
+}
+
+export interface VisitorStats {
+  count: number;
+}
+
 export interface GardenStats {
   scrapbookSlug: string;
   flowerCount: number;

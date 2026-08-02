@@ -7,6 +7,7 @@ import Home from '@/pages/home';
 import Scrapbook from '@/pages/scrapbook';
 import SparkleCursor from '@/components/sparkle-cursor';
 import FloatingDecorations from '@/components/floating-decorations';
+import SiteFooter from '@/components/site-footer';
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ function App() {
           <SparkleCursor />
           <FloatingDecorations />
           <Router />
+          <SiteFooter />
         </WouterRouter>
         <Toaster />
       </TooltipProvider>

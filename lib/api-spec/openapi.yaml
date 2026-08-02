@@ -398,6 +398,70 @@ paths:
               schema:
                 $ref: "#/components/schemas/Polaroid"
 
+  /guest-notes:
+    get:
+      operationId: getGuestNotes
+      tags: [scrapbooks]
+      summary: Get all public guest notes (newest first)
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/GuestNote"
+    post:
+      operationId: createGuestNote
+      tags: [scrapbooks]
+      summary: Leave a public guest note
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GuestNoteInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GuestNote"
+        "400":
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /stats/visitors:
+    get:
+      operationId: getVisitorStats
+      tags: [scrapbooks]
+      summary: Get total visitor count
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VisitorStats"
+
+  /stats/visit:
+    post:
+      operationId: recordVisit
+      tags: [scrapbooks]
+      summary: Record a new visitor session
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/VisitorStats"
+
   /scrapbooks/{slug}/garden:
     get:
       operationId: getGarden
@@ -814,6 +878,47 @@ components:
       required:
         - authorName
         - imageUrl
+
+    GuestNote:
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        message:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+      required:
+        - id
+        - name
+        - message
+        - createdAt
+
+    GuestNoteInput:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 50
+        message:
+          type: string
+          minLength: 1
+          maxLength: 150
+      required:
+        - name
+        - message
+
+    VisitorStats:
+      type: object
+      properties:
+        count:
+          type: number
+      required:
+        - count
 
     GardenStats:
       type: object

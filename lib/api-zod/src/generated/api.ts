@@ -412,6 +412,56 @@ export const CreatePolaroidResponse = zod.object({
 
 
 /**
+ * @summary Get all public guest notes (newest first)
+ */
+export const GetGuestNotesResponseItem = zod.object({
+  "id": zod.number(),
+  "name": zod.string(),
+  "message": zod.string(),
+  "createdAt": zod.coerce.date()
+})
+export const GetGuestNotesResponse = zod.array(GetGuestNotesResponseItem)
+
+
+/**
+ * @summary Leave a public guest note
+ */
+export const createGuestNoteBodyNameMax = 50;
+
+export const createGuestNoteBodyMessageMax = 150;
+
+
+
+export const CreateGuestNoteBody = zod.object({
+  "name": zod.string().min(1).max(createGuestNoteBodyNameMax),
+  "message": zod.string().min(1).max(createGuestNoteBodyMessageMax)
+})
+
+export const CreateGuestNoteResponse = zod.object({
+  "id": zod.number(),
+  "name": zod.string(),
+  "message": zod.string(),
+  "createdAt": zod.coerce.date()
+})
+
+
+/**
+ * @summary Get total visitor count
+ */
+export const GetVisitorStatsResponse = zod.object({
+  "count": zod.number()
+})
+
+
+/**
+ * @summary Record a new visitor session
+ */
+export const RecordVisitResponse = zod.object({
+  "count": zod.number()
+})
+
+
+/**
  * @summary Get friendship garden stats (growth from interactions)
  */
 export const GetGardenParams = zod.object({

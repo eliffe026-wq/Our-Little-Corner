@@ -117,3 +117,19 @@ export const polaroidsTable = pgTable("polaroids", {
 export const insertPolaroidSchema = createInsertSchema(polaroidsTable).omit({ id: true, createdAt: true });
 export type InsertPolaroid = z.infer<typeof insertPolaroidSchema>;
 export type Polaroid = typeof polaroidsTable.$inferSelect;
+
+export const guestNotesTable = pgTable("guest_notes", {
+  id: serial("id").primaryKey(),
+  name: text("name").notNull(),
+  message: text("message").notNull(),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
+export const insertGuestNoteSchema = createInsertSchema(guestNotesTable).omit({ id: true, createdAt: true });
+export type InsertGuestNote = z.infer<typeof insertGuestNoteSchema>;
+export type GuestNote = typeof guestNotesTable.$inferSelect;
+
+export const visitsTable = pgTable("visits", {
+  id: serial("id").primaryKey(),
+  createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});

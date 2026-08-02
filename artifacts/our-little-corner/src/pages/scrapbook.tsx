@@ -8,6 +8,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
+import { CreateModal } from "@/components/create-modal";
+
 // Import sections
 import EnvelopeSection from "@/components/envelope";
 import DiarySection from "@/components/diary-section";
@@ -125,6 +127,9 @@ export default function Scrapbook() {
           </motion.div>
         </main>
       )}
+
+      {/* Floating Create Button */}
+      <CreateModal />
 
       {/* Setup Name Dialog */}
       <Dialog open={showNameModal} onOpenChange={(open) => !open && userName && setShowNameModal(false)}>

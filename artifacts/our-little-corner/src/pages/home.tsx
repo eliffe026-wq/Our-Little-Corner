@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CreateModal } from "@/components/create-modal";
 import { Heart } from "lucide-react";
+import GuestNotesSection from "@/components/guest-notes-section";
 
 export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
@@ -105,10 +106,21 @@ export default function Home() {
               </motion.div>
             </div>
             
+            {/* Guest Notes Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 3.8 }}
+              className="w-full mt-8"
+            >
+              <GuestNotesSection />
+            </motion.div>
+
             <motion.div 
               initial={{ opacity: 0, y: 20 }} 
               animate={{ opacity: 1, y: 0 }} 
-              transition={{ delay: 3.5 }}
+              transition={{ delay: 4.2 }}
+              className="mt-8"
             >
               <CreateModal trigger={
                 <button className="font-serif text-xl md:text-2xl text-primary-foreground bg-primary px-10 py-4 rounded-full shadow-lg flex items-center gap-3 hover:scale-105 hover:bg-primary/90 transition-all">

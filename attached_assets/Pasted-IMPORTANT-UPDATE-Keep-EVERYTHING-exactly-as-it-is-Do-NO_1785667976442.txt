@@ -1,0 +1,154 @@
+IMPORTANT UPDATE
+
+Keep EVERYTHING exactly as it is.
+
+Do NOT redesign the UI.
+Do NOT change the animations.
+Do NOT change the colors.
+Do NOT change the scrapbook flow.
+Do NOT remove or modify any existing features.
+
+Only implement the following additions.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. "CREATE OUR LITTLE CORNER" BUTTON ON EVERY SCRAPBOOK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Even when someone opens a personalized scrapbook link such as:
+
+our-little-corner/zainif-sana
+
+there should always be a floating beautiful button available somewhere on the page.
+
+Button Text:
+
+🎀 Create Our Little Corner
+
+or
+
+💌 Make One For Your Bestie
+
+The button should match the existing Pinterest scrapbook aesthetic.
+
+Use soft pink gradients.
+
+Tiny bows.
+
+Floating sparkles.
+
+Rounded edges.
+
+Hover animation.
+
+Paper pop click animation.
+
+When clicked, it should launch the exact same scrapbook creation flow already implemented.
+
+The generated scrapbook should be completely separate from the current one.
+
+Do NOT overwrite the current friendship.
+
+Every new scrapbook must generate its own unique personalized URL.
+
+Example:
+
+our-little-corner/alex-emma
+
+our-little-corner/john-sarah
+
+This feature creates the website's viral sharing loop.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+2. LEAVE A GUEST NOTE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+At the FINAL PAGE, underneath the friendship message and above the "Create Our Little Corner" button, add a new section called:
+
+💌 Leave a Guest Note
+
+Visitors can leave a short wholesome message.
+
+Fields:
+
+• Name
+• Short Message
+
+Example:
+
+Name:
+Emma
+
+Message:
+This is literally the cutest Friendship Day website I've ever seen. ❤️
+
+Display guest notes as tiny handwritten sticky notes or mini Polaroids that fit the scrapbook aesthetic.
+
+Newest notes should appear first.
+
+Store guest notes in Firebase Firestore.
+
+Guest notes are public for everyone visiting the website to read.
+
+Automatically prevent spam by limiting message length (around 150 characters).
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+3. WEBSITE FOOTER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+At the bottom-right corner of every page, add a small elegant footer.
+
+Style it subtly so it blends into the scrapbook.
+
+Display:
+
+Made with ❤️ by Mrs. ZNF
+
+Use a handwritten font like Caveat.
+
+Small size.
+
+Low opacity.
+
+Hover slightly brightens the text.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+4. VISITOR COUNTER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Directly underneath the footer, display a live visitor counter.
+
+Example:
+
+👀 2,481 people visited Our Little Corner
+
+or
+
+🌸 2,481 scrapbook lovers visited
+
+Every time someone opens the website, increment the counter by one.
+
+Store the count in Firebase Firestore.
+
+The counter should update live.
+
+Do NOT count page refreshes repeatedly within the same browser session.
+
+Only increment once per visitor session to avoid inflated numbers.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+5. MOBILE EXPERIENCE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Ensure these new additions remain responsive.
+
+The floating "Create Our Little Corner" button should never block important content.
+
+The footer should remain elegant and unobtrusive on mobile devices.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FINAL INSTRUCTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+These are feature additions only.
+
+Everything else in the project—including layouts, animations, colors, scrapbook interactions, personalized URLs, Firebase integration, and overall Pinterest/coquette aesthetic—must remain exactly as it currently is.
