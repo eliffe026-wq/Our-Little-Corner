@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 import { CreateModal } from "@/components/create-modal";
+import GuestNotesSection from "@/components/guest-notes-section";
 
 // Import sections
 import EnvelopeSection from "@/components/envelope";
@@ -44,10 +45,12 @@ export default function Scrapbook() {
     }
   }, [slug, scrapbook]);
 
-  const saveName = () => {
-    if (tempName.trim() && slug) {
-      localStorage.setItem(`olc_username_${slug}`, tempName.trim());
-      setUserName(tempName.trim());
+  // Accepts an optional name to allow one-click name buttons to save immediately
+  const saveName = (nameOverride?: string) => {
+    const name = (nameOverride ?? tempName).trim();
+    if (name && slug) {
+      localStorage.setItem(`olc_username_${slug}`, name);
+      setUserName(name);
       setShowNameModal(false);
     }
   };
@@ -72,7 +75,7 @@ export default function Scrapbook() {
   }
 
   return (
-    <div className="min-h-[100dvh] pb-32 relative">
+    <div className="min-h-[100dvh] pb-40 relative">
       {/* Dynamic Background based on Theme */}
       <div className="fixed inset-0 pointer-events-none z-[-2] opacity-30" 
         style={{
@@ -125,6 +128,22 @@ export default function Scrapbook() {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }} transition={{ duration: 0.5 }}>
             <FriendshipGarden slug={slug!} />
           </motion.div>
+
+          {/* ── Visitors' Wall ── */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="w-full border-t border-primary/10 pt-16">
+              <h2 className="text-3xl font-serif text-primary mb-3 text-center">🌍 Visitors' Wall</h2>
+              <p className="text-center font-sans text-sm text-muted-foreground mb-10">
+                Anyone who visits this page can leave a little note here.
+              </p>
+              <GuestNotesSection />
+            </div>
+          </motion.div>
         </main>
       )}
 
@@ -142,11 +161,20 @@ export default function Scrapbook() {
           </DialogHeader>
           <div className="space-y-4 py-4">
             <div className="flex flex-col gap-3">
-              <Button variant="outline" className="h-14 text-xl font-handwritten hover:bg-primary/10 hover:border-primary/50" onClick={() => { setTempName(scrapbook.creatorName); }}>
-                I'm {scrapbook.creatorName}
+              {/* One-tap: clicking a name button immediately opens the scrapbook */}
+              <Button
+                variant="outline"
+                className="h-14 text-xl font-handwritten hover:bg-primary/10 hover:border-primary/50 bg-primary/5"
+                onClick={() => saveName(scrapbook.creatorName)}
+              >
+                I'm {scrapbook.creatorName} 🌸
               </Button>
-              <Button variant="outline" className="h-14 text-xl font-handwritten hover:bg-primary/10 hover:border-primary/50" onClick={() => { setTempName(scrapbook.friendName); }}>
-                I'm {scrapbook.friendName}
+              <Button
+                variant="outline"
+                className="h-14 text-xl font-handwritten hover:bg-primary/10 hover:border-primary/50 bg-primary/5"
+                onClick={() => saveName(scrapbook.friendName)}
+              >
+                I'm {scrapbook.friendName} 🌸
               </Button>
             </div>
             <div className="flex items-center gap-2 pt-2">
@@ -158,9 +186,14 @@ export default function Scrapbook() {
               placeholder="Enter your name..." 
               value={tempName}
               onChange={(e) => setTempName(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && saveName()}
               className="text-center h-12 text-lg bg-card"
             />
-            <Button className="w-full h-12 text-lg rounded-xl font-serif bg-primary hover:bg-primary/90" onClick={saveName} disabled={!tempName.trim()}>
+            <Button
+              className="w-full h-12 text-lg rounded-xl font-serif bg-primary hover:bg-primary/90"
+              onClick={() => saveName()}
+              disabled={!tempName.trim()}
+            >
               Open Scrapbook 🌸
             </Button>
           </div>

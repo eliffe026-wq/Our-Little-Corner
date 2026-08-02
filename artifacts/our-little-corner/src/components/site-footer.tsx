@@ -18,24 +18,18 @@ export default function SiteFooter() {
         },
       });
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const formattedCount = stats?.count
-    ? stats.count.toLocaleString()
-    : "...";
+  const formattedCount = stats?.count != null ? stats.count.toLocaleString() : "...";
 
   return (
-    <div className="fixed bottom-4 right-4 z-40 flex flex-col items-end gap-1 pointer-events-none select-none">
-      <p
-        className="font-handwritten text-sm text-foreground/30 hover:text-foreground/60 transition-colors pointer-events-auto"
-        data-testid="text-footer-credit"
-      >
+    // Sits above the fixed "Create Our Little Corner" button (which is bottom-6 ≈ 24px + ~40px tall)
+    <div className="fixed bottom-[82px] right-4 z-40 flex flex-col items-end gap-0.5 pointer-events-none select-none">
+      <p className="font-handwritten text-sm text-foreground/30 hover:text-foreground/70 transition-colors duration-200 pointer-events-auto cursor-default">
         Made with ❤️ by Mrs. ZNF
       </p>
-      <p
-        className="font-handwritten text-xs text-muted-foreground/40 hover:text-muted-foreground/70 transition-colors pointer-events-auto"
-        data-testid="text-visitor-count"
-      >
+      <p className="font-handwritten text-xs text-muted-foreground/35 hover:text-muted-foreground/70 transition-colors duration-200 pointer-events-auto cursor-default">
         🌸 {formattedCount} scrapbook lovers visited
       </p>
     </div>
